@@ -4,7 +4,7 @@
 
 //create the Game class
 class Game {
-    //Game class parameters (outside of constructor) - see guide.
+    //Game class parameters (outside of constructor)
     //see Step 3
     missed = 0;
     phrases = [ 
@@ -18,6 +18,13 @@ class Game {
     activePhrase = null;
 
     constructor () {
-
     }
+/* Selects random phrase from phrases property
+@return {object} Phrase object chosen to be used */ 
+getRandomPhrase() {
+    const randomPhrase = Math.floor(Math.random()* this.phrases.length);
+    const phrase = this.phrases[randomPhrase];
+    return phrase;
+}
+
 }
