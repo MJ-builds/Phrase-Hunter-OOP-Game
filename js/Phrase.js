@@ -8,7 +8,7 @@ class Phrase {
 phrase = this.phrase; //not sure if this is correct
 
     constructor (phrase) {
-        //not sure if this is correct. May need to do it outside of constructor - works for now
+        
         this.phrase = phrase.toLowerCase();
     }
 
