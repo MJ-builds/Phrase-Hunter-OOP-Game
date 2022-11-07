@@ -5,31 +5,47 @@
 //create the Phrase class
 class Phrase {
 
-phrase = this.phrase; //not sure if this is correct
+// phrase = this.phrase; //not sure if this is correct
 
     constructor (phrase) {
         
-        this.phrase = phrase.toLowerCase();
+        this.phrase = phrase.toLowerCase(); //revisit later
     }
 
     //method within Phrase
     addPhraseToDisplay() {
-{/* <div id="phrase" class="section">
-    <ul>
-        <li class="hide letter h">h</li>
-        <li class="hide letter o">o</li>
-        <li class="hide letter w">w</li>
-        <li class="space"> </li>
-        <li class="hide letter a">a</li>
-        <li class="hide letter r">r</li>
-        <li class="hide letter e">e</li>
-        <li class="space"> </li>
-        <li class="hide letter y">y</li>
-        <li class="hide letter o">o</li>
-        <li class="hide letter u">u</li>
-    </ul>
-</div> */}
+
+        const letterArray = this.phrase.split(''); //not sure if correct. NB. Check that working
+        //console.log(phraseLetters); for testing
+        let html = `<ul>`;
+
+letterArray.forEach(element => {
+    if(element ===" ") {
+        html += `<li class="space">${element}</li>`;
+    }
+    else html += `<li class="hide letter ${element}">${element}</li>`
+});
+    //console.log(html); for testing
+    html += `</ul>`;
+    return document.getElementById('phrase').innerHTML = html;
 
     }
+checkLetter(letter) {
+
+    const letterArray = this.phrase.split(''); //not sure if correct. NB. Check that working
+    letterArray.forEach(element => {
+        if(element === letter) {
+            console.log('true'); //for testing
+            return true;
+        }
+        else 
+        console.log('false'); //for testing
+        return false; //not sure if correct or in right place
+    });
+}
+
+showMatchedLetter(letter) {
+    let unhide = document.getElementById('phrase'); //experimental
+}
 
 }

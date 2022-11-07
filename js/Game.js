@@ -4,27 +4,37 @@
 
 //create the Game class
 class Game {
-    //Game class parameters (outside of constructor)
-    //see Step 3
-    missed = 0;
-    phrases = [ 
-        {phrase: 'Life is like a box of chocolates'},
-        {phrase: 'Home is where the heart is'},
-        {phrase: 'Fly away chariot'},
-        {phrase: 'Gone with the wind'},
-        {phrase: 'Seven years in Tibet'}
-    
-    ];
-    activePhrase = null;
-
     constructor () {
+    //Game class parameters
+        this.missed = 0;
+        this.phrases = [ 
+            'Pacific Ocean',
+            'India',
+            'Canada',
+            'Brazil',
+            'South Africa',
+            'New Delhi'  
+        ];
+        this.activePhrase = null;
+    
     }
 /* Selects random phrase from phrases property
 @return {object} Phrase object chosen to be used */ 
 getRandomPhrase() {
+    //think about shortening this to one variable and line of code
     const randomPhrase = Math.floor(Math.random()* this.phrases.length);
     const phrase = this.phrases[randomPhrase];
     return phrase;
 }
+startGame() {
+    //hide the start screen overlay (div element with id of 'overlay')
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+
+    //create new instance of Phrase class and set it to this.activePhrase (null becomes a random phrase)
+    this.activePhrase = new Phrase(this.getRandomPhrase());
+    this.activePhrase.addPhraseToDisplay();
+
+} 
 
 }
