@@ -38,7 +38,7 @@ class Phrase {
 
   showMatchedLetter(letter) {
     // select all elements that have the user selected letter
-    let matchedLetter = document.querySelectorAll("." + letter);
+    const matchedLetter = document.querySelectorAll("." + letter);
 
     //Remove the hide class and add the show class (which then 'reveals' the correct letter in the square)
     matchedLetter.forEach((ml) => {
@@ -46,5 +46,5 @@ class Phrase {
       ml.classList.add("show");
     });
   }
-  
+
 }
