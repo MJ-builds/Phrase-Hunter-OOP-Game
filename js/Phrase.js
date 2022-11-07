@@ -45,6 +45,6 @@ class Phrase {
       ml.classList.remove("hide");
       ml.classList.add("show");
     });
-
   }
+  
 }
