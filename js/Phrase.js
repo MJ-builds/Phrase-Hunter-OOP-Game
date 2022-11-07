@@ -24,22 +24,27 @@ class Phrase {
         html += `<li class="space">${element}</li>`;
       } else html += `<li class="hide letter ${element}">${element}</li>`;
     });
-//wrap the template literal (once looped through) in closing unordered list tag
+    //wrap the template literal (once looped through) in closing unordered list tag
     html += `</ul>`;
     return (document.getElementById("phrase").innerHTML = html);
   }
+
   checkLetter(letter) {
-    const letterArray = this.phrase.split(""); 
-    letterArray.forEach((element) => {
-      if (element === letter) {
-        console.log("true"); //for testing
-        return true;
-      } else console.log("false"); //for testing
-      return false; //not sure if correct or in right place
-    });
+    if (this.phrase.includes(letter)) {
+      return true;
+    }
+    return false; //unsure if necessary
   }
 
   showMatchedLetter(letter) {
-    let unhide = document.getElementById("phrase"); //experimental
+    // select all elements that have the user selected letter
+    let matchedLetter = document.querySelectorAll("." + letter);
+
+    //Remove the hide class and add the show class (which then 'reveals' the correct letter in the square)
+    matchedLetter.forEach((ml) => {
+      ml.classList.remove("hide");
+      ml.classList.add("show");
+    });
+
   }
 }
