@@ -32,8 +32,7 @@ class Phrase {
   checkLetter(letter) {
     if (this.phrase.includes(letter)) {
       return true;
-    }
-    return false; //unsure if necessary
+    } else return false; //unsure if necessary
   }
 
   showMatchedLetter(letter) {
@@ -42,9 +41,8 @@ class Phrase {
 
     //Remove the hide class and add the show class (which then 'reveals' the correct letter in the square)
     matchedLetter.forEach((ml) => {
-      ml.classList.remove("hide");
+      ml.classList.remove("hide"); //utilised for the checkForWin() method (Game.js)
       ml.classList.add("show");
     });
   }
-
 }
