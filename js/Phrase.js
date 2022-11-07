@@ -29,7 +29,7 @@ class Phrase {
     return (document.getElementById("phrase").innerHTML = html);
   }
   checkLetter(letter) {
-    const letterArray = this.phrase.split(""); //not sure if correct. NB. Check that working
+    const letterArray = this.phrase.split(""); 
     letterArray.forEach((element) => {
       if (element === letter) {
         console.log("true"); //for testing
