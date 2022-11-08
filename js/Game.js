@@ -87,4 +87,12 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
       overlay.className = "lose";
     }
   }
+/**
+ * handles onscreen keyboard button clicks
+ * @param {HTMLButtonElement} button - the clicked button element
+ */
+  handleInteraction(button) {
+    console.log(button) //testing only
+  }
+
 }
