@@ -34,23 +34,57 @@ class Game {
     this.activePhrase = new Phrase(this.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
   }
+
+  /**
+   * checks for winning move
+   * @returns {boolean} True if game has been won; false if game wasn't won
+   */
+  /* use the class name 'hide' to ascertain whether player has won. If there is no 'hide' class,
+it means player has essentially won (see showMatchedLetter()) re removing hide if letter found */
   checkForWin() {
     if (document.getElementsByClassName("hide").length == 0) {
       return true;
     } else return false;
   }
 
-  removeLife() {
-
-    /* when removeLife is called, liveHeart.png is replaced with lostHeart.png in 
+  /* when removeLife is called, liveHeart.png is replaced with lostHeart.png in 
     element position 0 (this.missed = 0)(with class name 'tries'). Variable 'missed' at the same time 
     increments by 1. When removeLife is then called again, variable missed (counter) also then acts 
-    as the index number for the class 'tries' element position */
-    const missedHearts = document.getElementsByClassName('tries')[this.missed].getElementsByTagName('img')[0];
-    missedHearts.src="images/lostHeart.png";    
-    this.missed +=1;
+    as the index number for the class 'tries' element position. Then, if missed = 5, call gameOver() method */
+  /**
+   * increases the value of the missed property
+   * removes a life from the scoreboard
+   * checks if player has remaining lives and ends game if player is out of said lives
+   */
+  removeLife() {
+    const missedHearts = document
+      .getElementsByClassName("tries")
+      [this.missed].getElementsByTagName("img")[0];
+    missedHearts.src = "images/lostHeart.png";
+    this.missed += 1;
 
-    //may need to add the gameover method trigger here, which triggers after 5 missed guesses
+    //figure out where this comes into play within the method itself.
+    if (this.missed == 5) {
+      this.gameOver();
+    }
   }
+  /**
+   * displays game over message
+   * @param {boolean} gameWon - whether or not the user won the game
+   */
+  gameOver(gameWon) {
+    const overlay = document.getElementById("overlay");
+    const winLoseMessage = document.getElementById("game-over-message");
 
+    overlay.style.display = "block";
+
+    //taking out the if(this.missed < 5) as conditional and rather checking gameWon param for true or false
+    if (gameWon) {
+      winLoseMessage.innerHTML = "Well done, you've won!";
+      overlay.className = "win";
+    } else if (!gameWon) { //doubt this else if is necessary...potentially remove.
+      winLoseMessage.innerHTML = "Sorry, you've lost! Try again!";
+      overlay.className = "lose";
+    }
+  }
 }

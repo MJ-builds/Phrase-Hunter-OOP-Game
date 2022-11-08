@@ -29,12 +29,21 @@ class Phrase {
     return (document.getElementById("phrase").innerHTML = html);
   }
 
+  /**
+   * checks if passed letter is in phrase
+   * @param {string} letter - letter to check
+   * @returns bool
+   */
   checkLetter(letter) {
     if (this.phrase.includes(letter)) {
       return true;
     } else return false; //unsure if necessary
   }
 
+  /**
+   * Displays passed letter on screen after a match is found
+   * @param {string} letter - letter to display
+   */
   showMatchedLetter(letter) {
     // select all elements that have the user selected letter
     const matchedLetter = document.querySelectorAll("." + letter);
