@@ -37,7 +37,7 @@ class Phrase {
   checkLetter(letter) {
     if (this.phrase.includes(letter)) {
       return true;
-    } else return false; //unsure if necessary
+    } //else return false; //unsure if necessary
   }
 
   /**

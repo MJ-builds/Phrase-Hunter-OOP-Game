@@ -21,6 +21,7 @@ keys.forEach(key => {
       //console.log(e.target.outerHTML) //testing only
       /*again, not sure if this is correct - issue could sit 
       with method. Easy to amend if needed down the line */
-      game.handleInteraction(e.target.outerHTML); 
+      game.handleInteraction(e.target.innerHTML); 
+      
     });
   });

@@ -82,17 +82,28 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
     if (gameWon) {
       winLoseMessage.innerHTML = "Well done, you've won!";
       overlay.className = "win";
-    } else if (!gameWon) { //doubt this else if is necessary...potentially remove.
+    } else if (!gameWon) {
+      //doubt this else if is necessary...potentially remove.
       winLoseMessage.innerHTML = "Sorry, you've lost! Try again!";
       overlay.className = "lose";
     }
   }
-/**
- * handles onscreen keyboard button clicks
- * @param {HTMLButtonElement} button - the clicked button element
- */
+  /**
+   * handles onscreen keyboard button clicks
+   * @param {HTMLButtonElement} button - the clicked button element
+   */
   handleInteraction(button) {
-    console.log(button) //testing only
+    const checker = this.activePhrase.checkLetter(button); //maybe change checker variable name...
+    if (checker) {
+      this.activePhrase.showMatchedLetter(button);
+      this.checkForWin();
+      if(this.checkForWin() == true)
+      {
+        const gameWon = true;
+        this.gameOver(gameWon);
+      }
+    } else if (!checker) {
+      this.removeLife();
+    }
   }
-
 }
