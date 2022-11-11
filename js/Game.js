@@ -26,6 +26,28 @@ class Game {
     return phrase;
   }
   startGame() {
+    
+        //reset game elements at the same time (from prior instances)
+    //Needs to be streamlined/improved. prototyped for now
+    const chosen = document.querySelectorAll(".chosen");
+    const wrong = document.querySelectorAll(".wrong");
+
+    //NB TO WORK ON! NOT WORKING!
+    const tries = document.querySelectorAll(".tries");
+    tries.forEach((element) => {
+        element.src = "images/liveHeart.png";
+    });
+
+    chosen.forEach((element) => {
+      element.classList.remove("chosen");
+      element.classList.add("key");
+      element.disabled = false;
+    });
+    wrong.forEach((element) => {
+      element.classList.remove("wrong");
+      element.classList.add("key");
+      element.disabled = false;
+    });
     //hide the start screen overlay (div element with id of 'overlay')
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
@@ -33,6 +55,7 @@ class Game {
     //create new instance of Phrase class and set it to this.activePhrase (null becomes a random phrase)
     this.activePhrase = new Phrase(this.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
+
   }
 
   /**
@@ -92,18 +115,22 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
    * handles onscreen keyboard button clicks
    * @param {HTMLButtonElement} button - the clicked button element
    */
+  //CLEAN THIS UP...
   handleInteraction(button) {
-    const checker = this.activePhrase.checkLetter(button); //maybe change checker variable name...
+    const checker = this.activePhrase.checkLetter(button.innerHTML); //maybe change checker variable name...
     if (checker) {
-      this.activePhrase.showMatchedLetter(button);
+      this.activePhrase.showMatchedLetter(button.innerHTML);
       this.checkForWin();
-      if(this.checkForWin() == true)
-      {
+      button.className = "chosen";
+      button.disabled = true;
+      if (this.checkForWin() == true) {
         const gameWon = true;
         this.gameOver(gameWon);
       }
     } else if (!checker) {
       this.removeLife();
+      button.className = "wrong";
+      button.disabled = true;
     }
   }
 }
