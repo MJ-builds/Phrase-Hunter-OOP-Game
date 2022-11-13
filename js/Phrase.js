@@ -4,13 +4,12 @@
 
 //create the Phrase class
 class Phrase {
-  // phrase = this.phrase; //not sure if this is correct
 
   constructor(phrase) {
-    this.phrase = phrase.toLowerCase(); //revisit later
+    this.phrase = phrase.toLowerCase();
   }
 
-  //method within Phrase
+//display phrase on game board
   addPhraseToDisplay() {
     //split the random phrase into a new array 'LetterArray' of letters (of the phrase itself)
     const letterArray = this.phrase.split("");
@@ -37,9 +36,9 @@ class Phrase {
   checkLetter(letter) {
     if (this.phrase.includes(letter)) {
       return true;
-    } //else return false; //unsure if necessary
+    }
   }
-
+  
   /**
    * Displays passed letter on screen after a match is found
    * @param {string} letter - letter to display

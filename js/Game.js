@@ -8,12 +8,12 @@ class Game {
     //Game class parameters
     this.missed = 0;
     this.phrases = [
-      "Pacific Ocean",
+      "Germany",
       "India",
       "Canada",
       "Brazil",
-      "South Africa",
-      "New Delhi",
+      "Zambia",
+      "Ireland",
     ];
     this.activePhrase = null;
   }
@@ -30,10 +30,8 @@ class Game {
     //Needs to be streamlined/improved. prototyped for now
     const chosen = document.querySelectorAll(".chosen");
     const wrong = document.querySelectorAll(".wrong");
-
     const tries = document.querySelectorAll("img[alt='Heart Icon']");
     const overlay = document.getElementById("overlay");
-
     overlay.className = "start";
 
     for (let i = 0; i < tries.length; i++) {
@@ -53,8 +51,11 @@ class Game {
 
   }
 
+  /*method that hides the start screen overlay, sets the activePhrase property to a random phrase,
+    and calls the addPhraseToDisplay() method on the activePhrase property */
   startGame() {
-    this.gameReset();
+
+    this.gameReset(); 
 
     //hide the start screen overlay (div element with id of 'overlay')
     const overlay = document.getElementById("overlay");
@@ -63,8 +64,8 @@ class Game {
     //create new instance of Phrase class and set it to this.activePhrase (null becomes a random phrase)
     this.activePhrase = new Phrase(this.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
-  }
-
+  
+}
   /**
    * checks for winning move
    * @returns {boolean} True if game has been won; false if game wasn't won
@@ -106,16 +107,18 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
     const overlay = document.getElementById("overlay");
     const winLoseMessage = document.getElementById("game-over-message");
 
-    overlay.style.display = "inline";
+    overlay.style.display = "flex";
 
     function winLose(message, cName) {
       winLoseMessage.innerHTML = message;
       overlay.className = cName;
+      
     }
 
     //taking out the if(this.missed < 5) as conditional and rather checking gameWon param for true or false
     if (gameWon) {
       winLose("Well done, you've won!", "win");
+      
     } else if (!gameWon) {
       winLose("Sorry, you've lost! Try again!", "lose");
     }
@@ -126,18 +129,25 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
    */
   //CLEAN THIS UP...
   handleInteraction(button) {
-    const checker = this.activePhrase.checkLetter(button.innerHTML); //maybe change checker variable name...
-    if (checker) {
+    const checker = this.activePhrase.checkLetter(button.innerHTML);
+    if (checker) { //if checkletter method call = true, call showMatchedLetter method
       this.activePhrase.showMatchedLetter(button.innerHTML);
+      //checks if the player has revealed all of the letters in the active phrase
       this.checkForWin();
+       /* if the phrase includes the guessed letter, the 'chosen' CSS class is added 
+      and selected button is disabled */
       button.className = "chosen";
       button.disabled = true;
+
+      //if checkForWin method is true (see logic in method itself), gameWon = true and game is won.
       if (this.checkForWin() == true) {
         const gameWon = true;
         this.gameOver(gameWon);
       }
-    } else if (!checker) {
+    } else if (!checker) { //if checkletter method call = false, call removelife method
       this.removeLife();
+      /* if the phrase does not include the guessed letter, the 'wrong' CSS class is added 
+      and selected button is disabled */
       button.className = "wrong";
       button.disabled = true;
     }
