@@ -19,6 +19,8 @@ Some aesthetic improvements have been made.
 
 Special mention for program background changes (All of the below are free to use under the Unsplash License):
 
+(https://unsplash.com/license)
+
 *   earth.jpg : https://unsplash.com/photos/Q1p7bh3SHj8. Attribution/credits: NASA
 *   moon.jpg : https://unsplash.com/photos/Gt_4iMB7hY0. Attribution/credits: Dennys Hess
 *   sky.jpg : https://unsplash.com/photos/ln5drpv_ImI. Attribution/credits: Vincentiu Solomon
