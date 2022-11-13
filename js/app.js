@@ -24,10 +24,10 @@ keys.forEach(key => {
   });
   //keyboard functionality - letters can be chosen via physical keystrokes.
   keys.forEach(key => {
-  this.addEventListener("keypress", (e) => {
+  this.addEventListener("keydown", (e) => {
     /* if the key pressed both equals associated qwerty key, and is not yet disabled (ie still active), 
     run the below event and handleInteraction method, otherwise don't run anything */
-      if(key.innerHTML === e.key & key.disabled == false){
+      if(key.innerHTML == e.key && key.disabled == false){
         game.handleInteraction(key);
       }
   });
