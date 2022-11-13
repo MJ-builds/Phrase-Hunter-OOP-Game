@@ -12,7 +12,7 @@ class Game {
       "Call it a day",
       "Once in a blue moon",
       "The best of both worlds",
-      "A blessing in disguise"  
+      "A blessing in disguise",
     ];
     this.activePhrase = null;
   }
@@ -32,15 +32,17 @@ class Game {
     const tries = document.querySelectorAll("img[alt='Heart Icon']");
     const overlay = document.getElementById("overlay");
     const title = document.getElementById("title_status");
-    document.getElementById("btn__reset").innerHTML = 'Play Again';
+
+    document.getElementById("btn__reset").innerHTML = "Play Again";
     overlay.className = "start";
     title.className = "title";
 
+    //'replenish' lives
     for (let i = 0; i < tries.length; i++) {
       tries[i].src = "images/liveHeart.png";
     }
 
-    //helper function
+    // forEach helper function for chosen/wrong
     function forEachHelper(element, toRemove, elementLooped = "element") {
       element.forEach((elementlooped) => {
         elementlooped.classList.remove(toRemove);
@@ -82,19 +84,19 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
     increments by 1. When removeLife is then called again, variable missed (counter) also then acts 
     as the index number for the class 'tries' element position. Then, if missed = 5, call gameOver() method */
   removeLife() {
-    if(!this.checkForWin() && this.missed <=5 ) {
-    const missedHearts = document
-      .getElementsByClassName("tries")
-      [this.missed].getElementsByTagName("img")[0];
-    missedHearts.src = "images/lostHeart.png";
-    this.missed += 1;
-    //figure out where this comes into play within the method itself.
-    if (this.missed == 5) {
+    if (!this.checkForWin() && this.missed <= 5) {
+      const missedHearts = document
+        .getElementsByClassName("tries")
+        [this.missed].getElementsByTagName("img")[0];
+      missedHearts.src = "images/lostHeart.png";
+      this.missed += 1;
+      //figure out where this comes into play within the method itself.
+      if (this.missed == 5) {
         this.missed = 0;
-      this.gameOver();
+        this.gameOver();
+      }
     }
   }
-}
   /**
    * displays game over message
    * @param {boolean} gameWon - whether or not the user won the game
