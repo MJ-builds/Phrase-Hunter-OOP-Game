@@ -8,12 +8,11 @@ class Game {
     //Game class parameters
     this.missed = 0;
     this.phrases = [
-      "Germany",
-      "India",
-      "Canada",
-      "Brazil",
-      "Zambia",
-      "Ireland",
+      "A piece of cake",
+      "Call it a day",
+      "Once in a blue moon",
+      "The best of both worlds",
+      "A blessing in disguise"  
     ];
     this.activePhrase = null;
   }
@@ -82,11 +81,6 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
     element position 0 (this.missed = 0)(with class name 'tries'). Variable 'missed' at the same time 
     increments by 1. When removeLife is then called again, variable missed (counter) also then acts 
     as the index number for the class 'tries' element position. Then, if missed = 5, call gameOver() method */
-  /**
-   * increases the value of the missed property
-   * removes a life from the scoreboard
-   * checks if player has remaining lives and ends game if player is out of said lives
-   */
   removeLife() {
     if(this.checkForWin() == false) {
     const missedHearts = document
