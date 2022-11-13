@@ -13,11 +13,17 @@ The rules of the game are simple:
 
 Right or wrong, a letter can only be selected once, after which point it is disabled for the rest of the round.
 
-Important:
+Changes:
 
-Some aesthetic improvements have been made.
+Some aesthetic improvements have been made:
 
-Special mention for program background changes (All of the below are free to use under the Unsplash License):
+*   css: body background-image: url("../images/earth.jpg");
+*   css: .start class background-image: url("../images/sky.jpg");
+*   css: .win class background-image: url("../images/launch.jpg");
+*   css: .lose class background-image: url("../images/moon.jpg");
+*   css: added title_win and title_loss classes (on conditions of win or lose), for font color changes.
+
+Special mention below for program backgrounds (All of the below are free to use under the Unsplash License):
 
 (https://unsplash.com/license)
 
