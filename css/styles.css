@@ -28,7 +28,9 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
-  background-image: url(https://images.unsplash.com/photo-1565932887479-b18108f07ffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  background-image: url("../images/earth.jpg");
+  background-size: cover;
+  
 }
 
 li, ol, ul {
@@ -182,7 +184,8 @@ button {
 
 .start {
   color: #FFF;
-  background-image: url(https://images.unsplash.com/photo-1514306191717-452ec28c7814?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80);
+  background-image: url("../images/sky.jpg");
+  background-size: cover;
 }
 
 .start a {
@@ -191,7 +194,8 @@ button {
 
 .win {
   color: #78CF82;
-  background-image: url(https://images.unsplash.com/photo-1564296787019-78c9b13c9b22?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+  background-image: url("../images/launch.jpg");
+  background-size: cover;
 }
 
 .win a {
@@ -199,7 +203,8 @@ button {
 }
 
 .lose {
-  background-image: url(https://images.unsplash.com/photo-1557264337-e8a93017fe92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+  background-image: url("../images/moon.jpg");
+  background-size: cover;
 }
 
 .lose a {
