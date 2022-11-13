@@ -22,6 +22,7 @@ keys.forEach(key => {
       game.handleInteraction(e.target);    
     });
   });
+
   //keyboard functionality - letters can be chosen via physical keystrokes.
   keys.forEach(key => {
   this.addEventListener("keydown", (e) => {
