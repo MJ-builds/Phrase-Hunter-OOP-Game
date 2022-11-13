@@ -25,29 +25,37 @@ class Game {
     const phrase = this.phrases[randomPhrase];
     return phrase;
   }
-  startGame() {
-    
-        //reset game elements at the same time (from prior instances)
+  gameReset() {
+    //reset game elements at the same time (from prior instances)
     //Needs to be streamlined/improved. prototyped for now
     const chosen = document.querySelectorAll(".chosen");
     const wrong = document.querySelectorAll(".wrong");
 
-    //NB TO WORK ON! NOT WORKING!
-    const tries = document.querySelectorAll(".tries");
-    tries.forEach((element) => {
-        element.src = "images/liveHeart.png";
-    });
+    const tries = document.querySelectorAll("img[alt='Heart Icon']");
+    const overlay = document.getElementById("overlay");
 
-    chosen.forEach((element) => {
-      element.classList.remove("chosen");
-      element.classList.add("key");
-      element.disabled = false;
-    });
-    wrong.forEach((element) => {
-      element.classList.remove("wrong");
-      element.classList.add("key");
-      element.disabled = false;
-    });
+    overlay.className = "start";
+
+    for (let i = 0; i < tries.length; i++) {
+      tries[i].src = "images/liveHeart.png";
+    }
+
+    //helper function
+    function forEachHelper(element, toRemove, elementLooped = "element") {
+      element.forEach((elementlooped) => {
+        elementlooped.classList.remove(toRemove);
+        elementlooped.classList.add("key");
+        elementlooped.disabled = false;
+      });
+    }
+    forEachHelper(chosen, "chosen");
+    forEachHelper(wrong, "wrong");
+
+  }
+
+  startGame() {
+    this.gameReset();
+
     //hide the start screen overlay (div element with id of 'overlay')
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
@@ -55,7 +63,6 @@ class Game {
     //create new instance of Phrase class and set it to this.activePhrase (null becomes a random phrase)
     this.activePhrase = new Phrase(this.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
-
   }
 
   /**
@@ -99,16 +106,18 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
     const overlay = document.getElementById("overlay");
     const winLoseMessage = document.getElementById("game-over-message");
 
-    overlay.style.display = "block";
+    overlay.style.display = "inline";
+
+    function winLose(message, cName) {
+      winLoseMessage.innerHTML = message;
+      overlay.className = cName;
+    }
 
     //taking out the if(this.missed < 5) as conditional and rather checking gameWon param for true or false
     if (gameWon) {
-      winLoseMessage.innerHTML = "Well done, you've won!";
-      overlay.className = "win";
+      winLose("Well done, you've won!", "win");
     } else if (!gameWon) {
-      //doubt this else if is necessary...potentially remove.
-      winLoseMessage.innerHTML = "Sorry, you've lost! Try again!";
-      overlay.className = "lose";
+      winLose("Sorry, you've lost! Try again!", "lose");
     }
   }
   /**

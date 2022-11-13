@@ -17,10 +17,7 @@ const keys = document.querySelectorAll('.key')
 
 keys.forEach(key => {
     key.addEventListener("click", (e) => {
-    //testing - ultimately i think we should return only the actual key but following guide for now.
-      //console.log(e.target.outerHTML) //testing only
-      /*again, not sure if this is correct - issue could sit 
-      with method. Easy to amend if needed down the line */
+        //call the handleInteraction method to handle keystrokes etc.
       game.handleInteraction(e.target); 
       
     });
