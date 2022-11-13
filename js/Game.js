@@ -116,7 +116,7 @@ it means player has essentially won (see showMatchedLetter()) re removing hide i
       winLose("Well done, you've won!", "win");
       title.className = "title_win";
     } else if (!gameWon) {
-      winLose("Sorry, you've lost!", "lose");
+      winLose("Sorry, too many incorrect guesses!", "lose");
       title.className = "title_lose";
     }
   }
